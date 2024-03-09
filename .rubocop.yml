@@ -1,0 +1,10 @@
+require: rubocop-rails
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "./spec/top_notifier_helper.rb"
+    - "**/*_spec.rb"
+    - "./config/environments/development.rb"
