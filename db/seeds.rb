@@ -1,9 +1,23 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# frozen_string_literal: true
+
+blog_versions = [
+  {
+    content: "<div>\n  <h1>Welcome to Blinkist!</h1>\n  <p>Blinkist is a platform that distills key insights from " \
+    "outstanding nonfiction books. See how it can redefine your reading routines...</p>\n  " \
+    "<button id='signup' class='bg-green-800 text-white px-5 py-2 rounded'>Sign up</button>\n</div>\n"
+  },
+  {
+    content: "<div>\n  <h1>Start Learning with Blinkist</h1>\n  <p>Gain key insights from the world's best nonfiction " \
+    "books with Blinkist. Transform your journeys into learning opportunities ...</p>\n  " \
+    "<button id='signup' class='bg-green-800 text-white px-5 py-2 rounded'>Sign up</button>\n</div>"
+  },
+  {
+    content: "<div>\n  <h1>Explore Books Differently with Blinkist</h1>\n  <p>Blinkist provides concise overviews of " \
+    "notable nonfiction books. Make the most of your time by learning vital insights efficiently...</p>\n  " \
+    "<button id='signup' class='bg-green-800 text-white px-5 py-2 rounded'>Sign up</button>\n</div>"
+  }
+]
+
+blog_versions.each do |version|
+  Version.create!(content: version[:content])
+end
