@@ -12,11 +12,11 @@ RSpec.describe Version do
 
     it 'is not valid without a content' do
       version.content = nil
-      expect(version).to_not be_valid
+      expect(version).not_to be_valid
     end
   end
 
-  context '#click_through_rate' do
+  describe '#click_through_rate' do
     it 'returns 0 if no page views' do
       expect(version.click_through_rate).to eq(0)
     end
