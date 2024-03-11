@@ -1,0 +1,5 @@
+<div data-controller="analytics">
+  <h1 class="my-5">This article will help you get better at reading!</h1>
+  <%= @version.content.html_safe %>
+  <button data-action="click->analytics#trackSignup" class="bg-green-800 text-white px-5 py-2 rounded">Sign up</button>
+</div>

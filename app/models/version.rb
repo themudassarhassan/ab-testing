@@ -4,7 +4,9 @@ class Version < ApplicationRecord
   validates :content, presence: true
 
   def click_through_rate
-    number_of_page_views.positive? ? number_of_clicks / number_of_page_views.to_f : 0
+    return number_of_clicks / number_of_page_views.to_f if number_of_page_views.positive?
+
+    0
   end
 
   private
