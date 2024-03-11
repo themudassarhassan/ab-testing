@@ -4,9 +4,12 @@ class AnalyticsController < ApplicationController
   skip_forgery_protection
 
   def create
-    Analytics.create!(analytics_params)
-
-    head :ok
+    analytics = Analytics.new(analytics_params)
+    if analytics.save
+      head :ok
+    else
+      render json: { errors: analytics.errors }, status: :bad_request
+    end
   end
 
   private
@@ -24,6 +27,6 @@ class AnalyticsController < ApplicationController
   end
 
   def tracking_info
-    @tracking_info ||= JSON.parse(cookies.signed[:tracking_info]).with_indifferent_access
+    @tracking_info ||= JSON.parse(cookies[:tracking_info]).with_indifferent_access
   end
 end

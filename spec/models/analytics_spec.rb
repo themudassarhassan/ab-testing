@@ -14,5 +14,10 @@ RSpec.describe Analytics do
       analytics.user_uuid = nil
       expect(analytics).to_not be_valid
     end
+
+    it 'is not valid without a event_type' do
+      analytics.event_type = nil
+      expect(analytics).to_not be_valid
+    end
   end
 end

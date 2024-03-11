@@ -5,5 +5,5 @@ class Analytics < ApplicationRecord
 
   enum event_type: %w[page_view signup].index_by(&:itself)
 
-  validates :user_uuid, presence: true
+  validates :user_uuid, :event_type, presence: true
 end
