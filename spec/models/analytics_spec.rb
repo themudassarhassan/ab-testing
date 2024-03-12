@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Analytics do
   let(:analytics) { create(:analytics) }
 
-  context 'validations' do
+  context 'with validations' do
     it 'is valid with valid attributes' do
       expect(analytics).to be_valid
     end

@@ -5,9 +5,8 @@ class ArticlesController < ApplicationController
     if version_id
       @version = Version.find(version_id)
     else
-      @version = Version.order('Random()').limit(1).first
-      cookie_value = { version_id: @version.id, user_uuid: SecureRandom.uuid }
-      cookies[:tracking_info] = { value: JSON.generate(cookie_value), httpOnly: true }
+      @version = Version.sample
+      cookies[:tracking_info] = { value: cookie_value, httpOnly: true }
     end
   end
 
@@ -21,5 +20,9 @@ class ArticlesController < ApplicationController
     return {} unless cookies[:tracking_info]
 
     JSON.parse(cookies[:tracking_info]).with_indifferent_access
+  end
+
+  def cookie_value
+    JSON.generate(version_id: @version.id, user_uuid: SecureRandom.uuid)
   end
 end

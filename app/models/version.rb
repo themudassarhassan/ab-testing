@@ -9,6 +9,10 @@ class Version < ApplicationRecord
     0
   end
 
+  def self.sample
+    order('Random()').limit(1).first
+  end
+
   private
 
   def number_of_page_views

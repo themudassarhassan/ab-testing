@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Version do
   let(:version) { create(:version) }
 
-  context 'validations' do
+  context 'with validations' do
     it 'is valid with valid attributes' do
       expect(version).to be_valid
     end
